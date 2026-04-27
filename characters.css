@@ -1,0 +1,136 @@
+@font-face {
+  font-family: 'Benguiat';
+  src: url(font/Benguiat/Benguiat\Normal.ttf);
+}
+
+html{
+color: #ffd22ee6;
+  text-align: center;}
+
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+/* Grid контейнер */
+.container {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  height: 100vh;
+}
+
+/* header */
+
+
+.merch-header {grid-column: 1 / 9;
+  grid-row: 2 / 3;
+            padding: 120px 0 60px;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('image/wall.jpg');
+            background-size: cover;
+            text-align: center;
+            color: #f44336;
+            font-family: 'Benguiat', serif;
+            border-bottom: 3px solid #ffa600;
+        }
+
+        .merch-header h1 {
+            font-size: 52px;
+            text-shadow: 0 0 20px #ff0000;
+        }
+/* imgbar */
+.imgbar {
+  grid-column: 1 / 9;
+  grid-row:4 / 5;
+  background-color: #000000d0;
+  padding: 15px;
+  display: flex;
+  flex-direction: row;      /* вертикально */
+  justify-content: space-between; /* рівні відступи */
+ height: 210px;
+}
+
+/* aside left */
+.left {
+  grid-column: 2 / 4;
+  grid-row: 5 / 6;
+  background-color: #000000d0;
+  height: auto;
+  padding-top: 50px;
+}
+
+/* main */
+.main {
+  grid-column: 4 / 6;
+  grid-row: 5 / 6;
+  width: 600px;
+  height: auto;
+  font-size: 20px;
+  padding: 20px;
+   text-align: justify;
+  background-color: #000000d0;
+}
+
+/* aside right */
+.right {
+  grid-column: 6 / 8;
+  grid-row: 5 / 6;
+  background-color: #000000d0;
+  height: auto;
+  padding-top: 50px;
+}
+
+/* footer */
+footer{
+  grid-column: 1 / 9;
+  grid-row: 6 / 7;
+  height: 60px;
+  color: #fff;
+  padding: 15px 30px;
+  background: rgba(0,0,0,0.9);
+  border-top: 2px solid #ff0000;
+  box-shadow: 0 0 20px #ff0000;
+  display: flex;  
+  justify-content: center; /* рівні відступи */
+}
+body {
+      background-image: url("image/wall.jpg");
+    background-size: cover;        /* на весь екран */
+    background-repeat: no-repeat;  /* без повтору */
+    background-attachment: fixed
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Benguiat', serif;
+}
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(0,0,0,0.9);
+  border-bottom: 2px solid #ff0000;
+  box-shadow: 0 0 20px #ff0000;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ff0000;
+}

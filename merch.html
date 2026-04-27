@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stranger Things</title>
+     <link rel="stylesheet" href="merch.css">
+    <style>
+       
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="things.html">🎲 Home</a></li>
+            <li><a href="story.html">🎲 Lore</a></li>
+            <li><a href="characters.html">🎲 Cast</a></li>
+            <li><a href="dnd.html">🎲 D&D</a></li>            
+            <li><a href="merch.html">🎲 Merch</a></li>
+        </ul>
+    </nav>
+
+    <div class="merch-header">
+        <h1>STRANGER THINGS</h1>
+     </div>
+
+    <div class="filters">
+        <label>
+            Категорія:
+            <select id="categoryFilter">
+                <option value="">Всі товари</option>
+            </select>
+        </label>
+
+        <label>
+            Пошук:
+            <input type="text" id="searchInput" placeholder="Наприклад: Hellfire...">
+        </label>
+
+        <button id="resetBtn">Скинути фільтри</button>
+    </div>
+
+    <div id="loading" class="message">Завантаження мерчу з Upside Down...</div>
+    <div id="error" class="message" style="color:#f44336;"></div>
+    <div id="noResults" class="message">Нічого не знайдено за твоїми фільтрами...</div>
+
+    <div id="productsContainer" class="products-grid"></div>
+
+    <footer>
+        <ul class="nav-links">
+            <li><a href="https://www.netflix.com/ua/title/80057281">☠ Netflix ☠</a></li>
+            <li><a href="https://www.instagram.com/strangerthings/">☠ Official ☠</a></li>
+        </ul>
+    </footer>
+
+    <script src="merch.js"></script>
+</body>
+</html>

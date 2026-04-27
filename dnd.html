@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Stranger Things - D&D</title>
+    <link rel="stylesheet" href="dnd.css">
+    <style>
+        /* === МОДАЛЬНЕ ВІКНО === */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            overflow-y: auto;
+        }
+        .modal-content {
+            background: linear-gradient(#290101, #461111);
+            margin: 5% auto;
+            padding: 30px;
+            border: 4px solid #ff0000;
+            box-shadow: 0 0 30px #ff0000;
+            width: 90%;
+            max-width: 820px;
+            border-radius: 8px;
+            position: relative;
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: #ffd22e;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover { color: #ff0000; }
+
+        /* Таблиця персонажів */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background: rgba(0,0,0,0.7);
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ff4444;
+            color: #ffd22e;
+        }
+        th {
+            background: #000;
+            color: #f44336;
+        }
+        .table-container {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+   <ul class="nav-links">
+            <li><a href="things.html">🎲 Home</a></li>
+            <li><a href="story.html">🎲 Lore</a></li>
+            <li><a href="characters.html">🎲 Cast</a></li>
+            <li><a href="dnd.html">🎲 D&D</a></li>            
+            <li><a href="merch.html">🎲 Merch</a></li>
+        </ul>
+</nav>
+
+<div class="merch-header">
+        <h1>STRANGER THINGS</h1>
+     </div>
+
+<div class="page-content">
+    <div class="container">
+
+        <aside class="left">
+            <figure>
+                <img src="image/eddie.jpg" style="height:250px;">
+                <figcaption>Едді Мансон</figcaption>
+            </figure>   
+            <figure>
+                <img src="image/willfig.jpg" style="height:250px;">
+                <figcaption>Вілл Мудрий</figcaption>
+            </figure>
+        </aside>
+
+        <div class="main">
+            <p>
+                У серіалі Stranger Things настільна рольова гра Dungeons & Dragons є не просто розвагою головних героїв, а фактично основою, через яку вони сприймають і пояснюють усе надприродне, що відбувається навколо них. 
+          На початку історії хлопці грають у D&D як у звичайну уявну пригоду, де вони борються з монстрами, зокрема з Демогоргоном.
+           Але дуже швидко стає зрозуміло, що межа між грою і реальністю стирається: коли зникає Вілл Баєрс, діти не знаходять іншого способу пояснити подію, окрім як через терміни своєї гри, і саме так істота з іншого виміру отримує назву Демогоргон. 
+           Це створює важливий міст між фантазією та реальністю, який проходить через увесь серіал. 
+           У другому сезоні цей зв’язок стає ще сильнішим, коли герої стикаються з новою загрозою з Підгору, і саме через знайомі їм правила D&D вони ідентифікують її як Mind Flayer.
+            Фактично сюжет розгортається так, ніби це нова кампанія в грі, де з’являються нові рівні загрози, а герої поступово “прокачуються” у своєму розумінні ворога. 
+            У третій сезон ця логіка продовжується, адже монстр знову набуває форми, зрозумілої через ігрову термінологію, і навіть самі події виглядають як розвиток складної рольової сесії.
+             У четвертому сезоні цей зв’язок виходить на новий рівень через персонажа Едді Мансона і його клуб Hellfire Club, який є прямою відсилкою до реальних шкільних D&D-спільнот 80-х років. 
+             Сам клуб, його стиль і навіть атмосфера повністю побудовані навколо культури гри, де кампанії сприймаються як епічні пригоди з демонами, героями та складними сюжетами. Водночас з’являється і Векна, один із найвідоміших антагоністів у всесвіті D&D, що ще раз підкреслює, наскільки глибоко гра інтегрована в міфологію серіалу. 
+             Важливо, що D&D у Stranger Things виконує не лише декоративну функцію. Вона фактично є мовою, якою герої описують невідоме, способом структурувати хаос і страх. 
+             Діти не мають наукових пояснень для паралельного виміру чи істот з нього, але мають зрозумілу систему правил, монстрів і класів персонажів, через яку можуть осмислювати реальність. 
+             Через це сам серіал у багатьох аспектах побудований як велика рольова кампанія, де є команда героїв, поступове ускладнення “рівнів”, фінальні боси та відчуття постійного розвитку історії.
+            
+            </p> 
+            
+            <!-- Кнопка, яка відкриває форму -->
+            <button id="openModalBtn" style="display:block; margin:25px auto; padding:15px 30px; font-size:22px; background:#f44336; color:white; border:none; border-radius:6px; cursor:pointer;">
+                ⚔️ Створити персонажа D&D
+            </button>
+
+            <!-- Таблиця створених персонажів -->
+            <div class="table-container">
+                <h3 style="color:#f44336; text-align:center; margin-bottom:15px;">Створені персонажі Hellfire Club</h3>
+                <table id="charactersTable">
+                    <thead>
+    <tr>
+        <th>Ім'я</th>
+        <th>Гравець</th>
+        <th>Раса</th>
+        <th>Клас</th>
+        <th>Предмети</th>
+        <th>Історія персонажа</th>
+    </tr>
+</thead>
+                    <tbody id="tableBody">
+                        <!-- Заповнюється JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <aside class="right">
+            <figure>
+                <img src="image/hellfire.jpg" style="height:250px;">
+                <figcaption>Клуб пекельного полум'я</figcaption>
+            </figure>   
+            <figure>
+                <img src="image/demofig.jpg" style="height:250px;">
+                <figcaption>Демоґорґон</figcaption>
+            </figure>
+        </aside>
+
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <ul class="nav-links">
+        <li><a href="https://www.instagram.com/rossduffer/">☠ Matt ☠</a></li>
+        <li><a href="https://www.instagram.com/officialmattduffer/">☠ Ross ☠</a></li>
+        <li><a href="https://www.netflix.com/ua/title/80057281">☠ Netflix ☠</a></li>
+    </ul>
+</footer>
+
+<!-- МОДАЛЬНЕ ВІКНО З ФОРМОЮ -->
+<div id="characterModal" class="modal">
+    <div class="modal-content" style="max-width: 750px;">
+        <span class="close" id="closeModal" style="color:#ff0000; font-size:42px;">&times;</span>
+        
+        <!-- Заголовок як на макеті -->
+        <div style="background:#fa2e00; color:#000; text-align:center; padding:12px; font-size:24px; font-weight:bold; margin-bottom:20px; border:3px solid #000;">
+            Створити персонажа
+        </div>
+
+        <form id="characterForm" style="display:grid; gap:18px; grid-template-columns: 180px 1fr; align-items:start;">
+
+            <!-- Ім'я -->
+            <div style="background:#000000; padding:10px; text-align:right; font-weight:bold; border:2px solid #000; text-align: center;">
+                Ім'я
+            </div>
+            <div>
+                <input type="text" id="name" required style="width:100%; padding:10px; font-size:18px;">
+                <div class="error" id="nameError" style="color:#ff4444; font-size:14px;"></div>
+            </div>
+
+            <!-- Клас -->
+            <div style="background:#000000; padding:10px; text-align:right; font-weight:bold; border:2px solid #000;text-align: center;">
+                Клас
+            </div>
+            <div>
+                <select id="class" required style="width:100%; padding:10px; font-size:18px;text-align: center;">
+                    <option value="">— Оберіть клас —</option>
+                    <option value="Воїн">Воїн</option>
+                    <option value="Маг">Маг</option>
+                    <option value="Пройдисвіт">Пройдисвіт</option>
+                    <option value="Клірик">Клірик</option>
+                    <option value="Бард">Бард</option>
+                    <option value="Рейнджер">Рейнджер</option>
+                </select>
+                <div class="error" id="classError" style="color:#ff4444; font-size:14px;"></div>
+            </div>
+
+            <!-- Раса (радіо-кнопки) -->
+            <div style="background:#000000; padding:10px; text-align:right; font-weight:bold; border:2px solid #000;text-align: center;">
+                Раса
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:15px; padding:8px; background:#ffffff; border:2px solid #000;text-align: center;color: #000;">
+                <label style="margin-right:15px;"><input type="radio" name="race" value="Людина" required> Людина</label>
+                <label style="margin-right:15px;"><input type="radio" name="race" value="Ельф"> Ельф</label>
+                <label style="margin-right:15px;"><input type="radio" name="race" value="Дварф"> Дварф</label>
+                <label style="margin-right:15px;"><input type="radio" name="race" value="Гном"> Гном</label>
+                <label style="margin-right:15px;"><input type="radio" name="race" value="Тифлінг"> Тифлінг</label>
+                <label><input type="radio" name="race" value="Орк"> Орк</label>
+            </div>
+
+            <!-- Історія -->
+            <div style="background:#000000; padding:10px; text-align:right; font-weight:bold; border:2px solid #000; height:100%;text-align: center;">
+                Історія
+            </div>
+            <div>
+                <textarea id="background" rows="6" style="width:100%; padding:12px; font-size:17px; resize:vertical;"></textarea>
+            </div>
+
+            <!-- Предмети -->
+            <div style="background:#000000; padding:10px; text-align:right; font-weight:bold; border:2px solid #000;text-align: center;">
+                Предмети
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:12px; padding:10px; background:#ffffff; border:2px solid #000;color: #000;">
+                <label><input type="checkbox" value="Меч"> Меч</label>
+                <label><input type="checkbox" value="Щит"> Щит</label>
+                <label><input type="checkbox" value="Лук"> Лук</label>
+                <label><input type="checkbox" value="Магічний посох"> Магічний посох</label>
+                <label><input type="checkbox" value="Зілля здоров'я"> Зілля здоров'я</label>
+                <label><input type="checkbox" value="Книга заклинань"> Книга заклинань</label>
+                <label><input type="checkbox" value="Кинджал"> Кинджал</label>
+                <label><input type="checkbox" value="Рюкзак"> Рюкзак</label>
+            </div>
+
+            <!-- Кнопка створення (по центру) -->
+            <div style="grid-column: 1 / -1; text-align:center; margin-top:10px;">
+                <button type="submit" 
+                        style="background:#f44336; color:white; padding:14px 40px; font-size:20px; border:none; border-radius:6px; cursor:pointer; box-shadow:0 4px 0 #a00;">
+                    ⚔️ Створити персонажа
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
+<script src="dnd.js"></script>
+</body>
+</html>
