@@ -3,7 +3,7 @@
   font-family: 'Benguiat';
   src: url(font/Benguiat/Benguiat\Bold.ttf);
 }
- 
+
 .container1 {
   display: grid;
   gap: 10px;
@@ -142,19 +142,3 @@ body {
 
 
 
-.container {
-  width: 1200px;
-    margin: 0 auto;
-}
-@media (maxwidth: 768px){
-  .container {
-    width: 100%;
-    padding: 0 15px;
-  }
-  .navbar{
-    flex-direction: column;
-  }
-  .hide-on-mobile {
-    display : none
-  }
-}
