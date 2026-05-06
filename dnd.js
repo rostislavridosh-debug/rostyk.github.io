@@ -1,8 +1,18 @@
-// dnd.js — Лабораторна №5 + Історія персонажа
+// dnd.js — Лабораторна №5 + Історія персонажа + Рекомендації предметів
 
 const API_URL = "https://69ee85499163f839f892c9f6.mockapi.io/characters";
 
 let characters = [];
+
+// Рекомендовані предмети для кожного класу
+const recommendedItems = {
+    "Воїн": ["Меч", "Щит", "Кинджал"],
+    "Маг": ["Магічний посох", "Книга заклинань"],
+    "Пройдисвіт": ["Кинджал", "Лук"],
+    "Клірик": ["Щит", "Зілля здоров'я", "Магічний посох"],
+    "Бард": ["Лук", "Книга заклинань"],
+    "Рейнджер": ["Лук", "Кинджал", "Зілля здоров'я"]
+};
 
 // Завантаження даних
 async function loadCharacters() {
@@ -41,7 +51,7 @@ function renderTable() {
     });
 }
 
-// Модальне вікно
+// ==================== МОДАЛЬНЕ ВІКНО ====================
 const modal = document.getElementById('characterModal');
 const openBtn = document.getElementById('openModalBtn');
 const closeBtn = document.getElementById('closeModal');
@@ -53,7 +63,40 @@ window.onclick = (e) => {
     if (e.target === modal) modal.style.display = 'none';
 };
 
-// Відправка форми
+// ==================== ДИНАМІЧНІ РЕКОМЕНДАЦІЇ ====================
+const classSelect = document.getElementById('class');
+const recommendationDiv = document.createElement('div');
+
+recommendationDiv.id = 'recommendation';
+recommendationDiv.style.cssText = `
+    grid-column: 1 / -1;
+    background: #1a0000;
+    border: 2px solid #ff4444;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #ffd22e;
+    margin-top: 8px;
+    display: none;
+`;
+recommendationDiv.innerHTML = `<strong>Рекомендовані предмети:</strong> <span id="recItems"></span>`;
+
+classSelect.parentElement.appendChild(recommendationDiv);
+
+// Обробник зміни класу
+classSelect.addEventListener('change', () => {
+    const selectedClass = classSelect.value;
+    
+    if (selectedClass && recommendedItems[selectedClass]) {
+        const items = recommendedItems[selectedClass].join(', ');
+        document.getElementById('recItems').textContent = items;
+        recommendationDiv.style.display = 'block';
+    } else {
+        recommendationDiv.style.display = 'none';
+    }
+});
+
+// ==================== ВІДПРАВКА ФОРМИ ====================
 document.getElementById('characterForm').addEventListener('submit', async function(e) {
     e.preventDefault();
 
@@ -94,13 +137,14 @@ document.getElementById('characterForm').addEventListener('submit', async functi
         if (!response.ok) throw new Error('Помилка при відправці');
 
         const saved = await response.json();
-        characters.unshift(saved);   // новий персонаж зверху
+        characters.unshift(saved);
         renderTable();
 
         showSuccess(`Персонаж "${name}" успішно створений!`);
 
         modal.style.display = 'none';
         this.reset();
+        recommendationDiv.style.display = 'none'; // скидаємо рекомендацію
 
     } catch (err) {
         console.error(err);
