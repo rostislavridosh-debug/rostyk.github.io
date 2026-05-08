@@ -124,3 +124,49 @@ footer {
 .nav-links a:hover {
   color: #ff0000;
 }
+.table-wrapper {
+    width: 100%;           /* або фіксована ширина: 1100px */
+    max-height: 650px;     /* змініть під себе — це висота, після якої з'явиться скрол */
+    overflow-y: auto;      /* вертикальний скрол */
+    overflow-x: auto;      /* горизонтальний скрол, якщо треба */
+    border: 1px solid #444;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+#charactersTable {
+    width: 100%;
+    table-layout: fixed;     /* дуже важливо! */
+    border-collapse: collapse;
+    background: #fff;
+}
+
+#charactersTable th,
+#charactersTable td {
+    padding: 10px 8px;
+    border: 1px solid #ccc;
+    text-align: left;
+    vertical-align: top;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;     /* не переносити текст в один рядок */
+}
+
+/* Фіксована ширина колонок */
+#charactersTable th:nth-child(1), 
+#charactersTable td:nth-child(1) { width: 160px; } /* Ім'я */
+
+#charactersTable th:nth-child(2), 
+#charactersTable td:nth-child(2) { width: 130px; } /* Гравець */
+
+#charactersTable th:nth-child(3), 
+#charactersTable td:nth-child(3) { width: 110px; } /* Раса */
+
+#charactersTable th:nth-child(4), 
+#charactersTable td:nth-child(4) { width: 120px; } /* Клас */
+
+#charactersTable th:nth-child(5), 
+#charactersTable td:nth-child(5) { width: 180px; } /* Предмети */
+
+#charactersTable th:nth-child(6), 
+#charactersTable td:nth-child(6) { width: auto; }  /* Історія — залишиться решта ширини */
