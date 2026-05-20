@@ -1,4 +1,4 @@
-// dnd.js — Лабораторна №5 + Історія персонажа + Рекомендації предметів
+// dnd.js — Лабораторна №5 + Рекомендації + Обмеження вводу в ім'я
 
 const API_URL = "https://69ee85499163f839f892c9f6.mockapi.io/characters";
 
@@ -35,7 +35,6 @@ function renderTable() {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${char.name || '—'}</td>
-            <td>Гравець ${char.id ? char.id.slice(-4) : ''}</td>
             <td>${char.race || '—'}</td>
             <td>${char.characterClass || char.class || '—'}</td>
             <td>${char.items || '—'}</td>
@@ -63,6 +62,17 @@ window.onclick = (e) => {
     if (e.target === modal) modal.style.display = 'none';
 };
 
+// ==================== Обмеження вводу тільки літери + пробіли ====================
+const nameInput = document.getElementById('name');
+
+nameInput.addEventListener('input', function() {
+    // Дозволяємо українські та англійські літери + пробіли
+    this.value = this.value.replace(/[^a-zA-Zа-щьюяА-ЩЬЮЯіІїЇєЄґҐ' ]/g, 'n');
+});
+
+// (Додатково) Можна обмежити максимальну довжину
+nameInput.maxLength = 15;
+
 // ==================== ДИНАМІЧНІ РЕКОМЕНДАЦІЇ ====================
 const classSelect = document.getElementById('class');
 const recommendationDiv = document.createElement('div');
@@ -83,7 +93,6 @@ recommendationDiv.innerHTML = `<strong>Рекомендовані предмет
 
 classSelect.parentElement.appendChild(recommendationDiv);
 
-// Обробник зміни класу
 classSelect.addEventListener('change', () => {
     const selectedClass = classSelect.value;
     
@@ -102,7 +111,7 @@ document.getElementById('characterForm').addEventListener('submit', async functi
 
     document.querySelectorAll('.error').forEach(el => el.textContent = '');
 
-    const name = document.getElementById('name').value.trim();
+    const name = nameInput.value.trim();
     const characterClass = document.getElementById('class').value;
     const raceInput = document.querySelector('input[name="race"]:checked');
     const race = raceInput ? raceInput.value : '';
@@ -144,7 +153,7 @@ document.getElementById('characterForm').addEventListener('submit', async functi
 
         modal.style.display = 'none';
         this.reset();
-        recommendationDiv.style.display = 'none'; // скидаємо рекомендацію
+        recommendationDiv.style.display = 'none';
 
     } catch (err) {
         console.error(err);
