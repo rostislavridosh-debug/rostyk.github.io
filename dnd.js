@@ -33,19 +33,14 @@ function renderTable() {
 
     characters.forEach(char => {
         const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${char.name || '—'}</td>
-            <td>${char.race || '—'}</td>
-            <td>${char.characterClass || char.class || '—'}</td>
-            <td>${char.items || '—'}</td>
-            <td>
-                <div class="history-cell">
-                    ${char.background ? 
-                        char.background.replace(/\n/g, '<br>') : 
-                        '—'}
-                </div>
-            </td>
-        `;
+       row.innerHTML = `
+    <td>${char.name || '—'}</td>
+    <td>${char.player || '—'}</td>           <!-- якщо є поле Гравець -->
+    <td>${char.race || '—'}</td>
+    <td>${char.characterClass || char.class || '—'}</td>
+    <td>${char.items || '—'}</td>
+    <!-- 6-та колонка видалена -->
+`;
         tbody.appendChild(row);
     });
 }
