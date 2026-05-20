@@ -117,12 +117,10 @@
             <!-- Таблиця створених персонажів -->
             <div class="table-container">
                 <h3 style="color:#f44336; text-align:center; margin-bottom:15px;">Створені персонажі Hellfire Club</h3>
-              <div class="table-wrapper">
-                  <table id="charactersTable">
-<thead>
+                <table id="charactersTable">
+                    <thead>
     <tr>
         <th>Ім'я</th>
-        <th>Гравець</th>
         <th>Раса</th>
         <th>Клас</th>
         <th>Предмети</th>
@@ -133,7 +131,6 @@
                         <!-- Заповнюється JavaScript -->
                     </tbody>
                 </table>
-         </div>
             </div>
         </div>
 
@@ -162,14 +159,16 @@
 
 <!-- МОДАЛЬНЕ ВІКНО З ФОРМОЮ -->
 <div id="characterModal" class="modal">
-    <div class="modal-content" style="max-width: 750px;">
-        <span class="close" id="closeModal" style="color:#ff0000; font-size:42px;">&times;</span>
-        
-        <!-- Заголовок як на макеті -->
-        <div style="background:#fa2e00; color:#000; text-align:center; padding:12px; font-size:24px; font-weight:bold; margin-bottom:20px; border:3px solid #000;">
-            Створити персонажа
-        </div>
+<div class="modal-content">
+    <span style=" color:#000;" class="close" id="closeModal">&times;</span>
+    
+    <div style="background:#fa2e00; color:#000; text-align:center; padding:16px 20px; 
+                font-size:26px; font-weight:bold; margin: -20px -10px 25px -10px;
+                border-bottom: 4px solid #000;">
+        Створити персонажа
+    </div>
 
+    <!-- решта форми -->
         <form id="characterForm" style="display:grid; gap:18px; grid-template-columns: 180px 1fr; align-items:start;">
 
             <!-- Ім'я -->
